@@ -1,4 +1,5 @@
 import java.util.Scanner;
+
 public class Week1Labs {
     // Question 1
     static void doOrder(int num1, int num2, int num3) {
@@ -57,7 +58,24 @@ public class Week1Labs {
 
     }
     // Question 4
+    static void displayTable()
+    {
+        /*
+        print for the title
+        a print row for miles + kilometers of both table, from left to right
+        loop outside to repeat the column
+        */
+        double kilo = 1.609;
+        int j = 20;
 
+        System.out.println("Miles\t" + "Kilometers\t" + "|\t" + "Kilometers\t" + "Miles\t");
+        for (int i = 1; i <= 10; i++)
+        {
+            System.out.println(i + "\t\t" + kilo * i + "\t\t|\t" + j + "\t\t\t" + j / kilo);
+            j += 5;
+        }
+    }
+    // Question 5
 
     public static void main(String[] args) {
         int num1, num2, num3, num;
@@ -99,6 +117,8 @@ public class Week1Labs {
                 rad2 = input.nextDouble();
 
                 check2Circle(x1, y1, rad1, x2, y2, rad2);
+            case 4:
+                displayTable();
         }
     }
 
