@@ -76,6 +76,31 @@ public class Week1Labs {
         }
     }
     // Question 5
+    static void displayNumber()
+    {
+        /*
+        1st loop to display 1st line == 10 nums
+        2nd big loop to display each row after the previous row is finished
+        condition (num % 5 == 0 || num % 6 == 0) --> print
+        else if (num % 5 == 0 && num % 6 == 0) --> ignore
+         */
+        long num = 100;
+        int count = 0;
+        while (num <= 200)
+        {
+            if (num % 5 == 0 || num % 6 == 0)
+            {
+                System.out.print(num + " ");
+                count++;
+            }
+            if (count == 10)
+            {
+                System.out.println();
+                count = 0;
+            }
+            num++;
+        }
+    }
 
     public static void main(String[] args) {
         int num1, num2, num3, num;
@@ -119,6 +144,8 @@ public class Week1Labs {
                 check2Circle(x1, y1, rad1, x2, y2, rad2);
             case 4:
                 displayTable();
+            case 5:
+                displayNumber();
         }
     }
 
