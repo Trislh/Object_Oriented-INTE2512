@@ -42,11 +42,11 @@ public class Week1Labs {
         double distance;
         double sum = rad1 + rad2;
         // Find the distance
-        double sq = square(x1 - x2) + square(y1 - y2);
+        double sq = square(x2 - x1) + square(y2 - y1);
         distance = (Math.sqrt(sq));
         // Find the position of circles
         // distance <= |rad1 - rad2| --> inside
-        if (distance <= Math.abs(rad1 - rad2))
+        if (distance <= Math.abs(rad2 - rad1))
         {
             System.out.println("Circle 2 is inside Circle 1");
         }
@@ -55,8 +55,8 @@ public class Week1Labs {
         {
             System.out.println("Circle 2 is overlaps Circle 1");
         }
-
     }
+
     // Question 4
     static void displayTable()
     {
@@ -71,10 +71,11 @@ public class Week1Labs {
         System.out.println("Miles\t" + "Kilometers\t" + "|\t" + "Kilometers\t" + "Miles\t");
         for (int i = 1; i <= 10; i++)
         {
-            System.out.println(i + "\t\t" + kilo * i + "\t\t|\t" + j + "\t\t\t" + j / kilo);
+            System.out.println(i + "\t\t" + kilo * i + "\t\t|\t" + j + "\t\t\t" + Math.round(j / kilo));
             j += 5;
         }
     }
+
     // Question 5
     static void displayNumber()
     {
@@ -102,56 +103,83 @@ public class Week1Labs {
         }
     }
 
+    // Question 6
+    static void doPyramid(int numLine)
+    {
+        int whiteSpace = numLine;
+
+        for (int line = 1; line <= numLine; line++) {
+            int num = 1;
+            int reverseNum = line;
+
+            for (int i = 0; i < whiteSpace; i++) {  // Print white space
+                System.out.print("\t");
+            }
+            whiteSpace-=1;
+
+            while (reverseNum > num) {  //numLine --> 1
+                System.out.print(reverseNum + "\t");
+                reverseNum--;
+            }
+            while (num <= line) {   // 1 --> numLine
+                System.out.print(num + "\t");
+                num++;
+            }
+            System.out.println();
+        }
+    }
+
+
     public static void main(String[] args) {
         int num1, num2, num3, num;
         int choice;
-        double x1,y1,rad1,x2,y2,rad2;
+        double x1, y1, rad1, x2, y2, rad2;
+        int numLine;
 
         Scanner input = new Scanner(System.in);
         System.out.print("Which question do you want to run: ");
         choice = input.nextInt();
 
         switch (choice) {
-            case 1:
-                System.out.print("Num 1: ");
+            case 1 -> {
+                System.out.print("Enter 3 numbers: ");
                 num1 = input.nextInt();
-                System.out.print("Num 2: ");
                 num2 = input.nextInt();
-                System.out.print("Num 3: ");
                 num3 = input.nextInt();
                 doOrder(num1, num2, num3);
-                break;
-            case 2:
+            }
+            case 2 -> {
                 System.out.print("Enter number you want to check: ");
                 num = input.nextInt();
                 checkInt(num);
-                break;
-            case 3:
-                System.out.print("Circle 1 - X: ");
+            }
+            case 3 -> {
+                System.out.print("Circle 1: X / Y / Radius: ");
                 x1 = input.nextDouble();
-                System.out.print("Circle 1 - Y: ");
                 y1 = input.nextDouble();
-                System.out.print("Circle 1 - Radius: ");
                 rad1 = input.nextDouble();
-
-                System.out.print("Circle 2 - X: ");
+                System.out.print("Circle 2: X / Y / Radius: ");
                 x2 = input.nextDouble();
-                System.out.print("Circle 2 - Y: ");
                 y2 = input.nextDouble();
-                System.out.print("Circle 2 - Radius: ");
                 rad2 = input.nextDouble();
-
                 check2Circle(x1, y1, rad1, x2, y2, rad2);
-            case 4:
-                displayTable();
-            case 5:
-                displayNumber();
+            }
+            case 4 -> displayTable();
+            case 5 -> displayNumber();
+            case 6 -> {
+                while (true) {
+                    System.out.print("Enter the number of lines (1-15): ");
+                    numLine = input.nextInt();
+                    if (numLine < 1 || numLine > 15) {
+                        System.out.println("The number of line is too low or high\n" +
+                                           "Please try again between 1 and 15");
+                    } else {
+                        doPyramid(numLine);
+                        break;
+                    }
+                }
+
+            }
         }
     }
-
-
-
-
-
-
 }
