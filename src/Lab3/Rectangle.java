@@ -13,6 +13,6 @@ class Rectangle {
         return Math.ceil(width * height);
     }
     public double getPerimeter() {
-        return Math.ceil((width * height) / 2);
+        return Math.ceil((width * height) * 2);
     }
 }
